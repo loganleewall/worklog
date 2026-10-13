@@ -1,0 +1,4 @@
+#!/bin/sh
+# worklog -- local self-reported work log with a calendar UI
+DIR="$(cd "$(dirname "$0")" && pwd)"
+exec /usr/bin/env PYTHONPATH="$DIR:$PYTHONPATH" python3 -m wl.cli "$@"

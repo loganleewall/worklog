@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>worklog</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='1' width='14' height='14' rx='4' fill='%232a78d6'/></svg>">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand"><h1>worklog</h1></div>
+    <div class="tabs" role="tablist" id="tabs">
+      <button role="tab" data-scope="week" aria-selected="true">Week</button>
+      <button role="tab" data-scope="month" aria-selected="false">Month</button>
+      <button role="tab" data-scope="log" aria-selected="false">Log</button>
+    </div>
+    <div class="nav">
+      <button id="prev" title="Previous (←)">‹</button>
+      <span class="label" id="range-label">…</span>
+      <button id="next" title="Next (→)">›</button>
+      <button id="today" class="textbtn" title="Jump to today (T)">Today</button>
+    </div>
+    <button class="primary" id="add" title="Add a block (N)">+ Add block</button>
+    <button class="iconbtn" id="theme" title="Light / dark">◐</button>
+  </header>
+  <section class="tiles" id="tiles"></section>
+  <main class="grid" id="view"></main>
+</div>
+
+<dialog id="editor">
+  <form id="form" autocomplete="off">
+    <h2 id="ed-heading">New block</h2>
+    <input id="f-title" class="big" maxlength="200" placeholder="What did you work on?">
+    <div class="row">
+      <label>Date <input type="date" id="f-day" required></label>
+      <label>Start <input type="time" id="f-start" step="300" required></label>
+      <label>End <input type="time" id="f-end" step="300" required></label>
+      <span class="dur" id="f-dur"></span>
+    </div>
+    <div class="row">
+      <div class="field">
+        <span class="lab">Rating</span>
+        <div class="rating" id="f-rating" role="group" aria-label="Rating, 1 to 5"></div>
+      </div>
+      <span class="dur" id="f-rating-text"></span>
+    </div>
+    <label>Project <input id="f-project" list="projects" maxlength="60" placeholder="optional — gives the block its colour"></label>
+    <datalist id="projects"></datalist>
+    <label>Notes <textarea id="f-notes" rows="3" maxlength="4000" placeholder="optional"></textarea></label>
+    <p class="err" id="f-err" hidden></p>
+    <div class="actions">
+      <button type="button" class="danger" id="f-delete">Delete</button>
+      <span class="grow"></span>
+      <button type="button" id="f-cancel">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" hidden></div>
+<div id="tip" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
